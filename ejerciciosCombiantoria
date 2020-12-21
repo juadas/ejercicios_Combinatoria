@@ -1,0 +1,70 @@
+"""
+Created on Sun Dec 20 22:55:10 2020
+
+@author: Usuario iTC
+"""
+
+#generar las permutaciones para una lista de 3 valores numericos
+# 1 = roja, 2 = verde, 3 = azul
+
+#Este codigo nos brinda directamente todas las permutaciones de un conjunto determinado
+#Usando una libreria llamada itertools importando permutations
+#creamos una lista para que todas las combinaciones se peuden guardar y luego poder imprimirlas
+from itertools import permutations
+
+numeros = [1, 2, 3]
+
+permutaciones = list(permutations(numeros))
+
+print(permutaciones)
+
+
+
+
+
+
+
+#Sacamos el factorial de un número usando un metodo recursivo; porque se vuelve a llamar la funcion 
+#dentro de ella mismo, empeiza con la primera comparacion del if en si es igual a 0, imaginemos que empieza con el 3
+#iria directamente al else donde se vuelve a llamar asi mismo restandole uno al numero que le llego que en este caso 
+#seria 2 luego seria 1 hasta llegar al 0, y ahí es cuando empieza de reversa multiplicandose los numeros
+#resultados de la resta que seria: 1*1 = 1 * 2 = 2, teniendo como final multiplicando al 3 * 2 = dando resultado 6.
+def factorial(number):
+    if number == 0:
+        return 1
+    
+    return number * factorial(number - 1)
+
+
+#Esta funcion esta hecha para variacion que resive como argumentos n y r, le pasamos como argumentos a la funcion FACTORIAL, n
+#Seguidamente le pasamos como argumentos la resta de n y r para que haga sus repecitivos calculos
+#para finalmente retornar la disivion entre esas dos variables
+def variacion(n,r):
+    n_factorial = factorial(n)
+    d_factorial = factorial(n-r)
+    return n_factorial/d_factorial
+    
+    return n_factorial/d_factorial
+#Esta funcion resive como argumentos n y r, hace exctamente lo mismo que la anterior funcion agregandole
+#unicamente el factorial de r
+#para finalmente retornar la operacion correspondiente
+def combinacion(n,r):
+    n_factorial = factorial(n)
+    d_factorial = factorial(n-r)
+    r_factorial = factorial(r)
+    return n_factorial/(r_factorial*d_factorial)
+    
+    
+    
+#Este seria nuestro main donde hacemos que el usuario nos ingrese los datos requeridos
+#doonde guardamos nuestros valores retornables de cada funcion correspondiente
+#y al final las imprimimos
+if __name__ == '__main__':  
+    
+    n = int (input("Escribe elementos N: "))
+    r = int (input("Escribe el grupo R:" ))
+    resultado = combinacion(n,r)
+    resultadoVariacion = variacion(n, r)
+
+    print(resultado)
+    print(resultadoVariacion)
